@@ -15,7 +15,7 @@
 .footerContents {
   width: 660px;
   h2 {
-    font-size: 25px;
+    font-size: 36px;
     font-weight: 700;
     width: 100%;
     text-align: center;
@@ -34,6 +34,10 @@
       width: 310px;
       height: 75px;
       margin: 10px;
+      a:hover img {
+        transform: scale(1.05);
+        transition: transform 0.2s;
+      }
       img {
         float: left;
         width: 55px;
@@ -92,7 +96,9 @@
       font-size: 16px;
       outline: none;
     }
-    button {
+    > a {
+      text-decoration: none;
+      padding: 5px 30px;
       cursor: pointer;
       color: @white;
       background-color: @dark-grey;
@@ -106,9 +112,12 @@
       font-size: 20px;
       margin-bottom: 36px;
       outline: none;
-    }
-    .blue {
-      background-color: @blue;
+      &:hover {
+        cursor: pointer;
+        color: @black;
+        background-color: @hover-blue;
+        transition-duration: 200ms;
+      }
     }
   }
 }
@@ -175,7 +184,9 @@
       font-size: 16px;
       outline: none;
     }
-    button {
+    > a {
+      text-decoration: none;
+      padding: 4px 0;
       color: @white;
       background-color: @dark-grey;
       height: 2em;

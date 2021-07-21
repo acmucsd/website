@@ -2,6 +2,7 @@
 
 .about {
   &__hero {
+    min-height: calc(100vh - 200px);
     display: flex;
     align-items: center;
     margin: 75px 0;
@@ -13,7 +14,7 @@
       font-size: 25px;
       font-weight: 500;
     }
-    img {
+    .hero-img {
       padding-left: 2em;
       width: 40%;
     }
@@ -88,11 +89,14 @@
           align-items: flex-start;
           justify-content: flex-start;
           img {
-            margin: 0 35px 0 0;
+            margin: 0 25px 0 0;
             height: 40px;
           }
+          a:hover img {
+            transform: scale(1.05);
+          }
         }
-        form {
+        &__newsletter {
           margin-top: 20px;
           display: flex;
           flex-direction: column;
@@ -111,10 +115,12 @@
             font-size: 16px;
             outline: none;
           }
-          button {
+          > a {
             cursor: pointer;
             color: @white;
+            text-decoration: none;
             background-color: @black;
+            padding: 4px 30px;
             height: 2em;
             width: 165px;
             height: 35px;
@@ -125,11 +131,39 @@
             font-size: 20px;
             margin-bottom: 36px;
             outline: none;
+            &:hover {
+              color: @white;
+              background-color: @blue;
+              transition-duration: 200ms;
+            }
           }
-          .blue {
-            color: @white;
-            background-color: @blue;
+        }
+        > a {
+          color: @white;
+          //background-color: @blue;
+          height: 2em;
+          width: 165px;
+          height: 35px;
+          border-radius: 8px;
+          border-color: @black;
+          border-style: none;
+          font-weight: bold;
+          font-size: 20px;
+          text-decoration: none;
+          text-align: center;
+          margin-bottom: 36px;
+          padding: 4px 12px;
+          outline: none;
+          &:hover {
+            opacity: 0.85;
+            transition: opacity 0.2s;
           }
+        }
+        &__button--blue {
+          background-color: @blue;
+        }
+        &__button--pink {
+          background-color: @pink;
         }
       }
     }
@@ -182,6 +216,10 @@
               height: 55px;
             }
           }
+          &__newsletter {
+            align-items: center;
+            text-align: center;
+          }
           form {
             align-items: center;
           }
@@ -230,7 +268,7 @@
       padding: 0 130px 0 165px;
       text-align: left;
     }
-    button {
+    > a {
       color: @white;
       background-color: @black;
       height: 2em;
@@ -241,8 +279,15 @@
       border-style: none;
       font-weight: bold;
       font-size: 20px;
+      text-decoration: none;
+      text-align: center;
       margin-bottom: 36px;
+      padding: 4px 0;
       outline: none;
+      &:hover {
+        opacity: 0.85;
+        transition: opacity 0.2s;
+      }
     }
   }
   &__board {
@@ -276,7 +321,7 @@
         margin: 7px;
       }
       color: #6b6b6b;
-      :hover {
+      > img:hover {
         transition: transform 0.1s;
         transform: scale(1.1);
         cursor: pointer;

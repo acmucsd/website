@@ -15,7 +15,7 @@ const cardContents = [
   { title: "Email", value: "contact@acmucsd.org", icon: EmailIcon },
   {
     title: "Discord",
-    value: "discord.com/somelink",
+    value: "acmurl.com/discord",
     icon: DiscordIcon,
   },
   { title: "Medium", value: "medium.com/acmucsd", icon: MediumIcon },
@@ -31,6 +31,10 @@ const cardContents = [
     icon: InstagramIcon,
   },
 ]
+function isValidEmail(input) {
+  const reg = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+  return reg.test(String(input).toLowerCase())
+}
 const Footer: React.FC = () => {
   const [email, setEmail] = useState("")
   return (
@@ -44,7 +48,9 @@ const Footer: React.FC = () => {
               let linkprefix = item.title === "Email" ? "mailto:" : "https://"
               return (
                 <div className="footerContents__contact__card">
-                  <img src={item.icon} alt={item.title} />
+                  <a href={linkprefix + item.value}>
+                    <img src={item.icon} alt={item.title} />
+                  </a>
                   <div>
                     <h3>{item.title}</h3>
                     <a href={linkprefix + item.value}>{item.value}</a>
@@ -56,16 +62,9 @@ const Footer: React.FC = () => {
           <div className="footerContents__newsletter">
             <h2>Newsletter</h2>
             <p>Receive weekly events and news!</p>
-            <input
-              type="text"
-              id="emailinput"
-              name="fname"
-              placeholder="my@email.com"
-              onChange={e => setEmail(e.target.value)}
-            />
-            <button className={email.length > 0 ? "blue" : ""}>
+            <a href="https://acmurl.com/newsletter" target="_blank">
               Subscribe!
-            </button>
+            </a>
           </div>
         </div>
       </div>
@@ -85,20 +84,16 @@ const Footer: React.FC = () => {
           <a href="http://instagram.com/acm.ucsd">
             <img src={InstagramIcon} alt="Instagram" />
           </a>
-          <a href="http://discord.com/somelink/">
+          <a href="http://acmurl.com/discord">
             <img src={DiscordIcon} alt="Discord" />
           </a>
         </div>
         <div className="mobileFooterContainer__newsletter">
           <h2>Newsletter</h2>
           <p>Receive weekly events and news!</p>
-          <input
-            type="text"
-            id="emailinput"
-            name="fname"
-            placeholder="my@email.com"
-          />
-          <button>Subscribe!</button>
+          <a href="https://acmurl.com/newsletter" target="_blank">
+            Subscribe!
+          </a>
         </div>
       </div>
     </div>
